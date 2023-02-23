@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>all the stories</title>
+</head>
+<body>
+  <h1>the list of all stories</h1>
+
+    <table>
+        <tr>
+            <th>Author Name</th>
+            <th>Author Age</th>
+            <th>Author Story</th>
+
+        </tr>
+        <tr th:each="stories :${storyList} ">
+            <td th:text="${stories.authorName}"></td>
+            <td th:text="${stories.authorAge}"></td>
+            <td th:text="${stories.authorStory}"></td>
+        </tr>
+
+    </table>
+  <br>
+  <br>
+  <a href="/write"> write a new story </a>
+  <br>
+  <br>
+  <a href="/"> back home </a>
+
+</body>
+</html>
