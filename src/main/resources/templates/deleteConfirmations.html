@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Confirmation</title>
+</head>
+<body>
+  <h1>Delete Confirmation</h1>
+  <form action="#" th:action="@{/deleteStory}" method="get" th:object="${foundStory}">
+    <label>writer name</label>
+    <input type="text" th:field="*{authorName}" disabled placeholder="your name here" >
+    <br>
+    <br>
+    <label>writer age</label>
+    <input type="text" th:field="*{authorAge}" disabled placeholder="your age here " >
+    <br>
+    <p>write your story here</p>
+    <textarea th:field="*{authorStory}" disabled > </textarea>
+    <br>
+    <br>
+    <input type="submit" value="Delete">
+    <br><br>
+    <h2>OR</h2>
+
+  </form>
+  <br>
+  <a href="/">Cancel</a>
+
+</body>
+</html>

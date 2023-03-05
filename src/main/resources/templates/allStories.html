@@ -7,17 +7,27 @@
 <body>
   <h1>the list of all stories</h1>
 
-    <table>
+    <table border="1" >
         <tr>
-            <th>Author Name</th>
-            <th>Author Age</th>
-            <th>Author Story</th>
+            <th> Story ID  </th>
+            <th> Author Name  </th>
+            <th> Author Age  </th>
+            <th> Story  </th>
+            <th> Action  </th>
+
 
         </tr>
         <tr th:each="stories :${storyList} ">
+            <td th:text="${stories.storyID}"></td>
             <td th:text="${stories.authorName}"></td>
             <td th:text="${stories.authorAge}"></td>
             <td th:text="${stories.authorStory}"></td>
+            <td>
+                <a th:href="@{/deleteStory/{id}(id = ${stories.storyID}) }"> Delete </a>
+                &nbsp;&nbsp;&nbsp;
+                <!--<a th:href="#"> Update </a>-->
+            </td>
+
         </tr>
 
     </table>
