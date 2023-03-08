@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.ory" >
+<head>
+    <meta charset="UTF-8">
+    <title>update your story</title>
+</head>
+<body>
+<h1>Update your story </h1>
+
+<form action="#" th:action="@{/updateStory}" method="post" th:object="${newWrite}">
+    <input type="hidden" th:field="*{storyID}">
+    <label>Update name</label>
+    <input type="text" th:field="*{authorName}" placeholder="your name here" >
+    <br>
+    <br>
+    <label>Update age</label>
+    <input type="text" th:field="*{authorAge}" placeholder="your age here " >
+    <br>
+    <p>Update your story here</p>
+    <textarea th:field="*{authorStory}"> </textarea>
+    <br>
+    <input type="submit"  value="Update">
+
+    <input type="reset" value="Reset" />
+
+</form>
+
+<br>
+<br>
+
+<a href="/"> back home </a>
+<br>
+<br>
+<a href="/allStories"> list of all stories </a>
+
+
+
+</body>
+</html>

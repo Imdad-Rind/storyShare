@@ -57,5 +57,15 @@ public class homeController {
         model.addAttribute("foundStory",foundStory);
         return "redirect:/deleteConfirmations";
     }*/
+    @GetMapping("/updateStoryPage/{id}")
+    String updateStoryPage(Model model,@PathVariable("id") UUID id){
+        model.addAttribute("newWrite",_storyServices.getStoryById(id));
+        return "updateStoryPage";
+    }
+    @PostMapping("/updateStory")
+    String updateStory(@ModelAttribute storyModel _storyModel){
+        _storyServices.updateStory(_storyModel.getStoryID(), _storyModel);
+        return "redirect:/allStories";
+    }
 
 }

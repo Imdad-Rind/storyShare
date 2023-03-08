@@ -22,27 +22,24 @@ public class storyServices {
         UUID newUserID = UUID.randomUUID();
         storyModel.setStoryID(newUserID);
         storyStore.add(storyModel);
-
     }
 
     public List<storyModel> getAllStoriesInFo(){
         return storyStore;
     }
-    public Optional<storyModel> getStoryById(UUID id){
-        //var indexOf_ID = storyStore.indexOf(id);
-        return storyStore.stream().filter(user -> _storyModel.getStoryID().equals(id) ).findFirst();
-            /*if (userID.equals(id)){
-                return storyStore;
+    public storyModel getStoryById(UUID id){
+        for (storyModel s : storyStore ){
+            if (id.equals(s.getStoryID())){
+                return s;
+            }
+        }
+        return null;
 
-            }*/
-        /*return null;*/
     }
+    public void deleteStoryInFo( UUID id){storyStore.remove(getStoryById(id));}
 
-    public void deleteStoryInFo( UUID id){
-        var studentToBeRemoved = getStoryById(id);
-        storyStore.remove(studentToBeRemoved);
+    public void updateStory(UUID id, storyModel storyModel) {
+
+        storyStore.set(storyStore.indexOf(getStoryById(id)),storyModel );
     }
-
-
-
 }
