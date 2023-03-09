@@ -3,14 +3,15 @@ package com.story.Model;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.util.UUID;
 
 @Data
 @Component
-public class storyModel {
+public class StoryModel {
     private UUID storyID;
-    private String authorName;
-    private int authorAge;
-    private String authorStory;
+    private String StoryTitle;
+    private String Story;
+    private LocalDate uploadDate;
 
 }

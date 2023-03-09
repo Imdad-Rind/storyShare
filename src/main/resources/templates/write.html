@@ -9,17 +9,15 @@
 
   <form action="#" th:action="@{/submitStories}" method="post" th:object="${write}">
       <label>writer name</label>
-      <input type="text" th:field="*{authorName}" placeholder="your name here" >
+      <input type="text" th:field="*{StoryTitle}" placeholder="your name here" >
       <br>
-      <br>
-      <label>writer age</label>
-      <input type="text" th:field="*{authorAge}" placeholder="your age here " >
       <br>
       <p>write your story here</p>
-      <textarea th:field="*{authorStory}"> </textarea>
+      <textarea th:field="*{Story}"> </textarea>
       <br>
-      <input type="submit" value="Submit">
-
+      <br>
+      <input type="submit" value="Upload">
+      &nbsp;&nbsp;&nbsp;
       <input type="reset" value="Reset" />
 
   </form>

@@ -1,34 +1,31 @@
 package com.story.services;
 
-import com.story.Model.storyModel;
+import com.story.Model.StoryModel;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class storyServices {
+public class StoryServices {
 
-    storyModel _storyModel;
-    private storyServices(storyModel storyModel){
-        this._storyModel = storyModel;
-    }
 
-    private List<storyModel> storyStore = new ArrayList<>();
+    private List<StoryModel> storyStore = new ArrayList<>();
 
-    public void addNewStoryInFo(storyModel storyModel){
+    public void addNewStoryInFo(StoryModel storyModel){
         UUID newUserID = UUID.randomUUID();
         storyModel.setStoryID(newUserID);
+        storyModel.setUploadDate(LocalDate.now());
         storyStore.add(storyModel);
     }
 
-    public List<storyModel> getAllStoriesInFo(){
+    public List<StoryModel> getAllStoriesInFo(){
         return storyStore;
     }
-    public storyModel getStoryById(UUID id){
-        for (storyModel s : storyStore ){
+    public StoryModel getStoryById(UUID id){
+        for (StoryModel s : storyStore ){
             if (id.equals(s.getStoryID())){
                 return s;
             }
@@ -38,7 +35,7 @@ public class storyServices {
     }
     public void deleteStoryInFo( UUID id){storyStore.remove(getStoryById(id));}
 
-    public void updateStory(UUID id, storyModel storyModel) {
+    public void updateStory(UUID id, StoryModel storyModel) {
 
         storyStore.set(storyStore.indexOf(getStoryById(id)),storyModel );
     }

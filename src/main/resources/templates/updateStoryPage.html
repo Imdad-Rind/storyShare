@@ -9,18 +9,17 @@
 
 <form action="#" th:action="@{/updateStory}" method="post" th:object="${newWrite}">
     <input type="hidden" th:field="*{storyID}">
+    <input type="hidden" th:field="*{uploadDate}">
     <label>Update name</label>
-    <input type="text" th:field="*{authorName}" placeholder="your name here" >
+    <input type="text" th:field="*{StoryTitle}" placeholder="story Title" >
     <br>
-    <br>
-    <label>Update age</label>
-    <input type="text" th:field="*{authorAge}" placeholder="your age here " >
     <br>
     <p>Update your story here</p>
-    <textarea th:field="*{authorStory}"> </textarea>
+    <textarea th:field="*{Story}"> </textarea>
+    <br>
     <br>
     <input type="submit"  value="Update">
-
+    &nbsp;&nbsp;&nbsp; &nbsp;
     <input type="reset" value="Reset" />
 
 </form>
@@ -31,7 +30,7 @@
 <a href="/"> back home </a>
 <br>
 <br>
-<a href="/allStories"> list of all stories </a>
+<a href="/allStories"> Cancel </a>
 
 
 

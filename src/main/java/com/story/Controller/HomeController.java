@@ -1,8 +1,8 @@
 package com.story.Controller;
 
 
-import com.story.Model.storyModel;
-import com.story.services.storyServices;
+import com.story.Model.StoryModel;
+import com.story.services.StoryServices;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
 
 @Controller
-public class homeController {
+public class HomeController {
 
-    storyModel stories;
-    storyServices _storyServices;
-    homeController(storyModel _stories, storyServices storyServices){
+    StoryModel stories;
+    StoryServices _storyServices;
+    HomeController(StoryModel _stories, StoryServices storyServices){
         this.stories = _stories;
         this._storyServices = storyServices;
     }
@@ -26,12 +26,12 @@ public class homeController {
 
     @GetMapping("/write")
     String write(Model model) {
-        model.addAttribute("write",new storyModel());
+        model.addAttribute("write",new StoryModel());
         return "write";
 
     }
     @PostMapping("/submitStories")
-    String submitStories(@ModelAttribute storyModel _storyModel){
+    String submitStories(@ModelAttribute StoryModel _storyModel){
         _storyServices.addNewStoryInFo(_storyModel);
         return "redirect:/allStories";
     }
@@ -63,9 +63,16 @@ public class homeController {
         return "updateStoryPage";
     }
     @PostMapping("/updateStory")
-    String updateStory(@ModelAttribute storyModel _storyModel){
+    String updateStory(@ModelAttribute StoryModel _storyModel){
         _storyServices.updateStory(_storyModel.getStoryID(), _storyModel);
-        return "redirect:/allStories";
+        String storyID = _storyModel.getStoryID().toString();
+        return "redirect:/storyDetail/"+storyID;
+    }
+
+    @GetMapping("/storyDetail/{id}")
+    String storyDetail(Model model,@PathVariable("id") UUID id){
+        model.addAttribute("storyDetail",_storyServices.getStoryById(id));
+        return "storyDetail";
     }
 
 }
